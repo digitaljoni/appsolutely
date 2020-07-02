@@ -19,3 +19,16 @@ Directory Structure:
     - theme
 - utilities
     - logging
+
+
+## Navigation and Routes
+
+This Flutter Starter Kit uses [Fluro package](https://pub.dev/packages/fluro) which makes routing easier especially with wildcard paths.
+
+Example:
+
+```
+router.navigateTo(context,'profile/12345',)
+```
+
+For each page, you would need to add routeName and routeHandler. Then add it to the Routes class in order for it to be added to list of routes.
