@@ -1,38 +1,27 @@
-import 'package:appsolutely/models/app_state.dart';
-import 'package:appsolutely/routes/routes.dart';
-import 'package:appsolutely/ui/pages/home_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class Application extends StatefulWidget {
-  Application({Key key}) : super(key: key);
+class Application extends StatelessWidget {
+  Application({Key key, this.router}) : super(key: key);
 
-  @override
-  _ApplicationState createState() => _ApplicationState();
-}
-
-class _ApplicationState extends State<Application> {
-  Router router;
-
-  @override
-  void initState() {
-    super.initState();
-
-    router = Router();
-    Routes.configureRoutes(router);
-    AppStateModel.router = router;
-  }
+  final Router router;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'App Title',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return MultiProvider(
+      providers: [
+        Provider<Router>.value(value: router),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'App Title',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        onGenerateRoute: router.generator,
       ),
-      onGenerateRoute: AppStateModel.router.generator,
     );
   }
 }

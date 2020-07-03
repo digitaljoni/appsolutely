@@ -1,6 +1,6 @@
-import 'package:appsolutely/models/app_state.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -18,6 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final router = Provider.of<Router>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('App Title'),
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             child: FlatButton(
               onPressed: () {
-                AppStateModel.router.navigateTo(
+                router.navigateTo(
                   context,
                   '/profile/12345',
                 );
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             child: FlatButton(
               onPressed: () {
-                AppStateModel.router.navigateTo(
+                router.navigateTo(
                   context,
                   '/login',
                 );
@@ -50,7 +52,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             child: FlatButton(
               onPressed: () {
-                AppStateModel.router.navigateTo(
+                router.navigateTo(
                   context,
                   '/what',
                 );
