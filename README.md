@@ -32,3 +32,7 @@ router.navigateTo(context,'profile/12345',)
 ```
 
 For each page, you would need to add routeName and routeHandler. Then add it to the Routes class in order for it to be added to list of routes.
+
+## Themes
+
+Themes are created using [PanacheWeb](https://rxlabz.github.io/panache_web)

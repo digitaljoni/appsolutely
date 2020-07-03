@@ -1,3 +1,4 @@
+import 'package:appsolutely/models/app_theme.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,6 +61,15 @@ class _HomePageState extends State<HomePage> {
               child: Text('What is this'),
             ),
           ),
+          Container(
+            child: Switch(
+              value: Provider.of<AppTheme>(context).isDarkMode,
+              onChanged: (bool isDarkMode) {
+                Provider.of<AppTheme>(context, listen: false)
+                    .updateThemeMode(isDarkMode);
+              },
+            ),
+          )
         ],
       ),
     );
