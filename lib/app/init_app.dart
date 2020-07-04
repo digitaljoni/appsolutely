@@ -1,8 +1,7 @@
 import 'package:appsolutely/app/start_app.dart';
-import 'package:appsolutely/models/app_theme.dart';
+import 'package:appsolutely/models/app_state.dart';
 import 'package:appsolutely/routes/routes.dart';
-import 'package:appsolutely/ui/styles/dark_theme.dart';
-import 'package:appsolutely/ui/styles/light_theme.dart';
+
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -22,18 +21,16 @@ class InitApp extends StatelessWidget {
     var isDarkMode = brightness == Brightness.dark;
 
     // initialize appState
-    final appTheme = AppTheme(
-      light: lightTheme,
-      dark: darkTheme,
-    );
+    final appState = AppState();
+    appState.updateThemeMode(isDarkMode);
 
-    appTheme.updateThemeMode(isDarkMode);
+    appState.changeLocale('en');
 
     return MultiProvider(
       providers: [
         Provider<Router>.value(value: router),
-        ChangeNotifierProvider<AppTheme>.value(
-          value: appTheme,
+        ChangeNotifierProvider<AppState>.value(
+          value: appState,
         )
       ],
       child: StartApp(),

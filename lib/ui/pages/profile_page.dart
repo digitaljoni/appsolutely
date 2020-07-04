@@ -1,3 +1,4 @@
+import 'package:appsolutely/generated/l10n.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text('Profile page'),
       ),
       body: Center(
-        child: Text('User Details ${widget.id}'),
+        child: Text(S.of(context).profileGreetings('${widget.id}')),
       ),
     );
   }

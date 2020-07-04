@@ -1,4 +1,7 @@
-import 'package:appsolutely/models/app_theme.dart';
+import 'package:appsolutely/generated/l10n.dart';
+import 'package:appsolutely/models/app_state.dart';
+import 'package:appsolutely/ui/pages/loading_page.dart';
+import 'package:appsolutely/ui/widgets/locale_button_widget.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,11 +22,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final router = Provider.of<Router>(context);
+    final router = Provider.of<Router>(context, listen: false);
+
+    final appState = Provider.of<AppState>(context);
+
+    if (!appState.isReady) {
+      return LoadingPage();
+    }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('App Title'),
+        title: Text(S.of(context).appTitle),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,13 +72,15 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             child: Switch(
-              value: Provider.of<AppTheme>(context).isDarkMode,
+              value: Provider.of<AppState>(context).isDarkMode,
               onChanged: (bool isDarkMode) {
-                Provider.of<AppTheme>(context, listen: false)
+                Provider.of<AppState>(context, listen: false)
                     .updateThemeMode(isDarkMode);
               },
             ),
-          )
+          ),
+          LocaleButtonWidget('en', 'English'),
+          LocaleButtonWidget('es', 'Spanish'),
         ],
       ),
     );
