@@ -1,6 +1,6 @@
-import 'package:appsolutely/config/styles/dark_theme.dart';
-import 'package:appsolutely/config/styles/light_theme.dart';
-import 'package:appsolutely/routes/routes.dart';
+import 'package:appsolutely/app/config/styles/dark_theme.dart';
+import 'package:appsolutely/app/config/styles/light_theme.dart';
+import 'package:appsolutely/app/core/app_routes.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,9 +1,10 @@
-import 'package:appsolutely/core/flavor.dart';
+import 'package:appsolutely/app/business_logic/view_models/app_view_model.dart';
+import 'package:appsolutely/app/core/app.dart';
+import 'package:appsolutely/app/core/app_flavor.dart';
+import 'package:appsolutely/app/ui/pages/loading_page.dart';
+import 'package:appsolutely/app/ui/widgets/locale_button_widget.dart';
+import 'package:appsolutely/app/utils/enums/flavor_type.dart';
 import 'package:appsolutely/generated/l10n.dart';
-import 'package:appsolutely/core/app.dart';
-import 'package:appsolutely/models/app_state.dart';
-import 'package:appsolutely/ui/pages/loading_page.dart';
-import 'package:appsolutely/ui/widgets/locale_button_widget.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,8 +26,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final router = Provider.of<App>(context, listen: false).router;
+    final flavorType = AppFlavor.instance.flavorType;
 
-    final appState = Provider.of<AppState>(context);
+    final appState = Provider.of<AppViewModel>(context).appState;
 
     if (!appState.isReady) {
       return LoadingPage();
@@ -74,16 +76,16 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             child: Switch(
-              value: Provider.of<AppState>(context).isDarkMode,
+              value: appState.isDarkMode,
               onChanged: (bool isDarkMode) {
-                Provider.of<AppState>(context, listen: false)
+                Provider.of<AppViewModel>(context, listen: false)
                     .updateThemeMode(isDarkMode);
               },
             ),
           ),
           LocaleButtonWidget('en', 'English'),
           LocaleButtonWidget('es', 'Spanish'),
-          Text('${Flavor.instance.flavorType}'),
+          Text('${flavorType.toShortString()}'),
         ],
       ),
     );

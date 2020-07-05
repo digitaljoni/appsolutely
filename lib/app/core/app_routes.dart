@@ -1,4 +1,4 @@
-import 'package:appsolutely/ui/pages/pages.dart';
+import 'package:appsolutely/app/ui/pages/pages.dart';
 import 'package:fluro/fluro.dart';
 
 class Routes {

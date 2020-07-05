@@ -1,4 +1,4 @@
-import 'package:appsolutely/models/app_state.dart';
+import 'package:appsolutely/app/business_logic/view_models/app_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ class LocaleButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       onPressed: () {
-        final appState = Provider.of<AppState>(context, listen: false);
+        final appState = Provider.of<AppViewModel>(context, listen: false);
         appState.changeLocale('$localeString');
       },
       child: Text('$localeTitle'),

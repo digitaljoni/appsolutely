@@ -1,23 +1,18 @@
-import 'package:appsolutely/core/init_app.dart';
-import 'package:appsolutely/core/app.dart';
+import 'package:appsolutely/app/core/app_widget.dart';
+import 'package:appsolutely/app/core/app.dart';
+import 'package:appsolutely/app/utils/enums/flavor_type.dart';
 import 'package:flutter/material.dart';
 
-enum FlavorType {
-  DEVELOPMENT,
-  STAGING,
-  PRODUCTION,
-}
-
-class Flavor {
-  Flavor() {
+class AppFlavor {
+  AppFlavor() {
     _instance = this;
     _init();
   }
 
   FlavorType flavorType = FlavorType.PRODUCTION;
 
-  static Flavor _instance;
-  static Flavor get instance => _instance;
+  static AppFlavor _instance;
+  static AppFlavor get instance => _instance;
 
   bool get isDevelopment => flavorType == FlavorType.DEVELOPMENT;
   bool get isStaging => flavorType == FlavorType.STAGING;
@@ -33,6 +28,6 @@ class Flavor {
 
     final application = App();
     await application.init();
-    runApp(InitApp(application));
+    runApp(AppWidget(application));
   }
 }
