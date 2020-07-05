@@ -2,7 +2,6 @@ import 'package:appsolutely/app/business_logic/view_models/app_view_model.dart';
 import 'package:appsolutely/app/core/app.dart';
 import 'package:appsolutely/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -25,14 +24,10 @@ class _AppWidgetState extends State<AppWidget> {
   void initState() {
     super.initState();
 
-    // get brightness mode
-    final brightness = SchedulerBinding.instance.window.platformBrightness;
-    final isDarkMode = brightness == Brightness.dark;
-
     // initialize appState
-    _appViewModel = AppViewModel();
-    _appViewModel.updateThemeMode(isDarkMode);
-    _appViewModel.changeLocale('en');
+    _appViewModel = AppViewModel(
+      repository: _app.appStateRepository,
+    );
   }
 
   @override

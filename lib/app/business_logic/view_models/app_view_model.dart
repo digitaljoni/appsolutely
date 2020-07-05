@@ -1,16 +1,40 @@
 import 'package:appsolutely/app/business_logic/models/app_state.dart';
+import 'package:appsolutely/app/business_logic/repositories/app_state_repository.dart';
 import 'package:appsolutely/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class AppViewModel extends ChangeNotifier {
-  AppViewModel() {
-    appState = AppState.empty();
+  AppViewModel({
+    this.repository,
+  }) {
+    _init();
   }
 
+  final AppStateRepository repository;
   AppState appState;
+
+  Future<void> _init() async {
+    // get brightness mode
+    final brightness = SchedulerBinding.instance.window.platformBrightness;
+    final isDefaultDarkMode = brightness == Brightness.dark;
+
+    // initialize appState
+    appState = AppState(isDefaultDarkMode, 'en');
+
+    final isDarkMode = await repository.fetchIsDarkMode();
+    final currentLocale = await repository.fetchCurrentLocale();
+
+    appState = appState.copyWith(
+      isDarkMode: isDarkMode,
+      currentLocale: currentLocale,
+    );
+    reloadLocale();
+  }
 
   void updateThemeMode(bool isDarkMode) {
     appState = appState.copyWith(isDarkMode: isDarkMode);
+    repository.setIsDarkMode(isDarkMode);
     notifyListeners();
   }
 
@@ -18,9 +42,15 @@ class AppViewModel extends ChangeNotifier {
     if (appState.currentLocale == localeString) {
       return;
     }
-    S.load(Locale(localeString));
-
     appState = appState.copyWith(currentLocale: localeString);
-    notifyListeners();
+    repository.setCurrentLocale(localeString);
+    reloadLocale();
+  }
+
+  void reloadLocale() {
+    if (appState.currentLocale != null) {
+      S.load(Locale(appState.currentLocale));
+      notifyListeners();
+    }
   }
 }
