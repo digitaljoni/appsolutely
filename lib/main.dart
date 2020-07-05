@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:appsolutely/app/init_app.dart';
+import 'package:appsolutely/core/flavor.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() => Development();
 
-  runApp(InitApp());
+class Development extends Flavor {
+  @override
+  FlavorType flavorType = FlavorType.DEVELOPMENT;
 }

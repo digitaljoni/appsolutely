@@ -1,4 +1,6 @@
+import 'package:appsolutely/core/flavor.dart';
 import 'package:appsolutely/generated/l10n.dart';
+import 'package:appsolutely/core/app.dart';
 import 'package:appsolutely/models/app_state.dart';
 import 'package:appsolutely/ui/pages/loading_page.dart';
 import 'package:appsolutely/ui/widgets/locale_button_widget.dart';
@@ -22,7 +24,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final router = Provider.of<Router>(context, listen: false);
+    final router = Provider.of<App>(context, listen: false).router;
 
     final appState = Provider.of<AppState>(context);
 
@@ -81,6 +83,7 @@ class _HomePageState extends State<HomePage> {
           ),
           LocaleButtonWidget('en', 'English'),
           LocaleButtonWidget('es', 'Spanish'),
+          Text('${Flavor.instance.flavorType}'),
         ],
       ),
     );

@@ -1,11 +1,8 @@
 import 'package:appsolutely/generated/l10n.dart';
+import 'package:appsolutely/core/app.dart';
 import 'package:appsolutely/models/app_state.dart';
-import 'package:appsolutely/ui/styles/dark_theme.dart';
-import 'package:appsolutely/ui/styles/light_theme.dart';
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import 'package:provider/provider.dart';
 
 class StartApp extends StatelessWidget {
@@ -15,7 +12,7 @@ class StartApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var router = Provider.of<Router>(context, listen: false);
+    final _application = Provider.of<App>(context, listen: false);
     return Consumer<AppState>(
       builder: (context, appState, _) {
         return MaterialApp(
@@ -28,10 +25,10 @@ class StartApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
           onGenerateTitle: (context) => S.of(context).appTitle,
-          darkTheme: darkTheme,
-          theme: lightTheme,
+          darkTheme: _application.theme.dark,
+          theme: _application.theme.light,
           themeMode: (appState.isDarkMode) ? ThemeMode.dark : ThemeMode.light,
-          onGenerateRoute: router.generator,
+          onGenerateRoute: _application.router.generator,
         );
       },
     );

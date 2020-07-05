@@ -20,6 +20,29 @@ Directory Structure:
 - utilities
     - logging
 
+## Core Concepts
+
+Located in  ```./lib/core``` directory
+
+### Flavors
+
+In order to start the app, you will need to create a class that extends Flavor. Flavors are basically different versions of the app configured for different environments. You can even extend this to other classifications (i.e. full or free).
+
+```
+class Development extends Flavor {
+  @override
+  FlavorType flavorType = FlavorType.DEVELOPMENT;
+  String baseUrl = 'http://localhost:3000/api/';
+}
+```
+
+Upon creation, this class will initialize an App object and use this as a parameter for ```InitApp``` obj.
+
+Flavor values are accessible via ```Flavor.instance```
+
+### Application Class
+
+Application class will initialize common objects or methods needed to run the app smoothly. This includes Router, SharedPreferences and more.
 
 ## State Management
 
