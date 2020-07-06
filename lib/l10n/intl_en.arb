@@ -2,5 +2,9 @@
     "appTitle": "Appsolutely",
     "confirm": "Confirm",
     "profileGreetings": "Hello, {name}",
+    "settings": "Settings",
+    "settingsDarkMode": "Dark Mode",
+    "settingsLanguage": "Language",
+    "settingsEnvironment": "Environment",
     "unknown": "Unknown"
 }

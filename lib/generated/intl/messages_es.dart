@@ -26,6 +26,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTitle" : MessageLookupByLibrary.simpleMessage("Appsolutely (ES)"),
     "confirm" : MessageLookupByLibrary.simpleMessage("Confirmar"),
     "profileGreetings" : m0,
+    "settings" : MessageLookupByLibrary.simpleMessage("Ajustes"),
+    "settingsDarkMode" : MessageLookupByLibrary.simpleMessage("Modo Oscuro"),
+    "settingsEnvironment" : MessageLookupByLibrary.simpleMessage("Environment"),
+    "settingsLanguage" : MessageLookupByLibrary.simpleMessage("Idioma"),
     "unknown" : MessageLookupByLibrary.simpleMessage("Unknown")
   };
 }
