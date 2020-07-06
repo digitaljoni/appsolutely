@@ -1,5 +1,6 @@
 import 'package:appsolutely/app/business_logic/models/app_state.dart';
 import 'package:appsolutely/app/business_logic/repositories/app_state_repository.dart';
+import 'package:appsolutely/app/utils/log/log.dart';
 import 'package:appsolutely/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -36,6 +37,7 @@ class AppViewModel extends ChangeNotifier {
     appState = appState.copyWith(isDarkMode: isDarkMode);
     repository.setIsDarkMode(isDarkMode);
     notifyListeners();
+    Log.info('Theme switched to ${isDarkMode ? 'Dark Theme' : 'Light Theme'}');
   }
 
   void changeLocale(String localeString) {
@@ -51,6 +53,7 @@ class AppViewModel extends ChangeNotifier {
     if (appState.currentLocale != null) {
       S.load(Locale(appState.currentLocale));
       notifyListeners();
+      Log.info('Locale reloaded ${appState.currentLocale}');
     }
   }
 }

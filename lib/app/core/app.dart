@@ -2,9 +2,13 @@ import 'package:appsolutely/app/business_logic/repositories/app_state_repository
 import 'package:appsolutely/app/business_logic/services/app_state_local.dart';
 import 'package:appsolutely/app/config/styles/dark_theme.dart';
 import 'package:appsolutely/app/config/styles/light_theme.dart';
+import 'package:appsolutely/app/core/app_flavor.dart';
 import 'package:appsolutely/app/core/app_routes.dart';
+import 'package:appsolutely/app/utils/enums/flavor_type.dart';
+import 'package:appsolutely/app/utils/log/log.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class App {
@@ -19,10 +23,8 @@ class App {
   AppStateRepository appStateRepository;
 
   Future<void> init() async {
-    // initialize theme
     _initTheme();
-
-    // init logging
+    _initLogging();
     _initRouter();
     await _initSharedPrefs();
     _initRepository();
@@ -41,6 +43,16 @@ class App {
       light: lightTheme,
       dark: darkTheme,
     );
+  }
+
+  void _initLogging() {
+    // initialize logging
+    Log.init();
+    if (AppFlavor.instance.flavorType == FlavorType.PRODUCTION) {
+      Log.setLevel(Level.INFO);
+      return;
+    }
+    Log.setLevel(Level.ALL);
   }
 
   void _initRouter() {
