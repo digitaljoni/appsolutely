@@ -7,6 +7,7 @@ class Routes {
     ProfilePage.routeName: ProfilePage.routeHandler,
     LoginPage.routeName: LoginPage.routeHandler,
     SettingsPage.routeName: SettingsPage.routeHandler,
+    SplashPage.routeName: SplashPage.routeHandler,
   };
 
   static void configureRoutes(Router router) {

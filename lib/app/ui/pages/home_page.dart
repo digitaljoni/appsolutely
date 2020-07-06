@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
 
-  static const routeName = '/';
+  static const routeName = '/home';
   static var routeHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     return HomePage();

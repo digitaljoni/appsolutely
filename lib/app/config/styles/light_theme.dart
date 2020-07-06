@@ -1,7 +1,8 @@
+import 'package:appsolutely/app/config/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData lightTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primarySwatch: AppStyle.primaryColor,
   brightness: Brightness.light,
   primaryColor: Color(0xff2196f3),
   primaryColorBrightness: Brightness.dark,
