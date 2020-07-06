@@ -6,23 +6,38 @@ A Flutter Starter Kit
 
 This project is a starting point for a Flutter application.
 
-Directory Structure:
-- config
-- routes using fluro
-- models
-- data
-    - repository
-    - services (API, Firebase, or sqlite)
-- ui
-    - pages
-    - widgets
-    - theme
-- utilities
-    - logging
+## Renaming For Your Project
+
+Install package called rename globally.
+
+```
+pub global activate rename
+```
+
+For example you would like to rename the app to 'Foodly' and use a different bundleId for it, just go to your project directory and run the following command:
+
+```
+pub global run rename --bundleId com.digitaljoni.foodly --appname 'Foodly'
+```
+
+
+## Directory Structure
+- lib
+    - app
+        - business_logic
+        - config
+        - core
+        - ui
+        - utils
+    - generated (do not edit files here)
+    - l10n (your ARB files)
+    main_development.dart
+    main_staging.dart
+    main_production.dart
 
 ## Core Concepts
 
-Located in  ```./lib/core``` directory
+Located in  ```./lib/app/core``` directory
 
 ### Flavors
 
