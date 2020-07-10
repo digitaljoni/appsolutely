@@ -1,6 +1,11 @@
 {
     "appTitle": "Appsolutely",
     "confirm": "Confirm",
+    "main": "Main",
+    "mainTab": "Main Tab",
+    "location": "Location",
+    "locationTab": "Location Tab",
+    "profile": "Profile",
     "profileGreetings": "Hello, {name}",
     "settings": "Settings",
     "settingsDarkMode": "Dark Mode",

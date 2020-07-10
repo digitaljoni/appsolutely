@@ -1,4 +1,4 @@
-import 'package:appsolutely/app/business_logic/services/app_state_local.dart';
+import 'package:appsolutely/services/app_state_local.dart';
 
 class AppStateRepository {
   AppStateRepository({this.local});

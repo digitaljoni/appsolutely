@@ -53,6 +53,56 @@ class S {
     );
   }
 
+  /// `Main`
+  String get main {
+    return Intl.message(
+      'Main',
+      name: 'main',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main Tab`
+  String get mainTab {
+    return Intl.message(
+      'Main Tab',
+      name: 'mainTab',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message(
+      'Location',
+      name: 'location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location Tab`
+  String get locationTab {
+    return Intl.message(
+      'Location Tab',
+      name: 'locationTab',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hello, {name}`
   String profileGreetings(Object name) {
     return Intl.message(

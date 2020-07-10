@@ -1,17 +1,17 @@
-import 'package:appsolutely/app/business_logic/repositories/app_state_repository.dart';
-import 'package:appsolutely/app/business_logic/services/app_state_local.dart';
+import 'package:appsolutely/repositories/app_state_repository.dart';
+import 'package:appsolutely/services/app_state_local.dart';
 import 'package:appsolutely/app/config/styles/dark_theme.dart';
 import 'package:appsolutely/app/config/styles/light_theme.dart';
-import 'package:appsolutely/app/core/app_flavor.dart';
-import 'package:appsolutely/app/core/app_routes.dart';
-import 'package:appsolutely/app/utils/enums/flavor_type.dart';
-import 'package:appsolutely/app/utils/log/log.dart';
+import 'package:appsolutely/app/flavor.dart';
+import 'package:appsolutely/app/routes.dart';
+import 'package:appsolutely/utils/enums/env_type.dart';
+import 'package:appsolutely/utils/log/log.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class App {
+class Application {
   AppTheme _theme;
   Router _router;
   SharedPreferences _prefs;
@@ -34,7 +34,7 @@ class App {
   }
 
   void dispose() {
-    // add close on any listeners
+    // add any close/dispose
   }
 
   void _initTheme() {
@@ -48,7 +48,7 @@ class App {
   void _initLogging() {
     // initialize logging
     Log.init();
-    if (AppFlavor.instance.flavorType == FlavorType.PRODUCTION) {
+    if (Flavor.instance.envType == EnvType.PRODUCTION) {
       Log.setLevel(Level.INFO);
       return;
     }

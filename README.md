@@ -4,49 +4,46 @@ A Flutter Starter Kit
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application. It is recommended that you download this repo instead of cloning it so that you can start fresh. 
 
 ## Renaming For Your Project
 
-Install package called rename globally.
+You can also use the  following pub package in order to rename your project. You need to install package called rename globally.
 
 ```
 pub global activate rename
 ```
 
-For example you would like to rename the app to 'Foodly' and use a different bundleId for it, just go to your project directory and run the following command:
+1. Extract zip to a directory. 
+2. Rename the directory to your new project name. i.e. foodly
 
 ```
-pub global run rename --bundleId com.digitaljoni.foodly --appname 'Foodly'
+mv appsolutely foodly
+```
+
+3. Go to the directory of your project
+
+```
+cd foodly
+```
+
+4. Run the rename package with the following parameters
+
+```
+pub global run rename --bundleId com.yourdomain.foodly --appname 'Foodly'
 ```
 
 
-## Directory Structure
-- lib
-    - app
-        - business_logic
-        - config
-        - core
-        - ui
-        - utils
-    - generated (do not edit files here)
-    - l10n (your ARB files)
-    main_development.dart
-    main_staging.dart
-    main_production.dart
 
-## Core Concepts
 
-Located in  ```./lib/app/core``` directory
+### Flavor
 
-### Flavors
-
-In order to start the app, you will need to create a class that extends Flavor. Flavors are basically different versions of the app configured for different environments. You can even extend this to other classifications (i.e. full or free).
+In order to start the app, you will need to create a class that extends Flavor. Flavors are basically different versions of the app with differenct configurations. Usually Flavors are configured for different environments. However, you can even extend this to other configurations (i.e. full or free versions).
 
 ```
 class Development extends Flavor {
   @override
-  FlavorType flavorType = FlavorType.DEVELOPMENT;
+  EnvType envType = FlavorType.DEVELOPMENT;
   String baseUrl = 'http://localhost:3000/api/';
 }
 ```

@@ -25,6 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "appTitle" : MessageLookupByLibrary.simpleMessage("Appsolutely"),
     "confirm" : MessageLookupByLibrary.simpleMessage("Confirm"),
+    "location" : MessageLookupByLibrary.simpleMessage("Location"),
+    "locationTab" : MessageLookupByLibrary.simpleMessage("Location Tab"),
+    "main" : MessageLookupByLibrary.simpleMessage("Main"),
+    "mainTab" : MessageLookupByLibrary.simpleMessage("Main Tab"),
+    "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
     "profileGreetings" : m0,
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "settingsDarkMode" : MessageLookupByLibrary.simpleMessage("Dark Mode"),

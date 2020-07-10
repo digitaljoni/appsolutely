@@ -1,7 +1,7 @@
-import 'package:appsolutely/app/business_logic/view_models/app_view_model.dart';
-import 'package:appsolutely/app/core/app_flavor.dart';
-import 'package:appsolutely/app/ui/widgets/settings_language_widget.dart';
-import 'package:appsolutely/app/utils/enums/flavor_type.dart';
+import 'package:appsolutely/app/app_view_model.dart';
+import 'package:appsolutely/app/flavor.dart';
+import 'package:appsolutely/pages/settings/widgets/settings_language_widget.dart';
+import 'package:appsolutely/utils/enums/env_type.dart';
 import 'package:appsolutely/generated/l10n.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
@@ -40,12 +40,12 @@ class SettingsPage extends StatelessWidget {
             title: Text(S.of(context).settingsLanguage),
             trailing: SettingsLanguageWidget(),
           ),
-          (AppFlavor.instance.flavorType == FlavorType.PRODUCTION)
+          (Flavor.instance.envType == EnvType.PRODUCTION)
               ? SizedBox()
               : ListTile(
                   title: Text(S.of(context).settingsEnvironment),
                   trailing: Text(
-                    '${AppFlavor.instance.flavorType.toShortString()}',
+                    '${Flavor.instance.envType.toShortString()}',
                   ),
                 ),
         ],

@@ -1,9 +1,9 @@
-import 'package:appsolutely/app/core/app_flavor.dart';
-import 'package:appsolutely/app/utils/enums/flavor_type.dart';
+import 'package:appsolutely/app/flavor.dart';
+import 'package:appsolutely/utils/enums/env_type.dart';
 
 void main() => Development();
 
-class Development extends AppFlavor {
+class Development extends Flavor {
   @override
-  FlavorType flavorType = FlavorType.DEVELOPMENT;
+  EnvType envType = EnvType.DEVELOPMENT;
 }

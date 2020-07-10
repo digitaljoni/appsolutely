@@ -1,23 +1,23 @@
-import 'package:appsolutely/app/business_logic/view_models/app_view_model.dart';
-import 'package:appsolutely/app/core/app.dart';
+import 'package:appsolutely/app/app_view_model.dart';
+import 'package:appsolutely/app/application.dart';
 import 'package:appsolutely/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
-class AppWidget extends StatefulWidget {
-  AppWidget(this.app, {Key key}) : super(key: key);
+class App extends StatefulWidget {
+  App(this.application, {Key key}) : super(key: key);
 
-  final App app;
+  final Application application;
 
   @override
-  _AppWidgetState createState() => _AppWidgetState(app);
+  _AppState createState() => _AppState(application);
 }
 
-class _AppWidgetState extends State<AppWidget> {
-  _AppWidgetState(this._app);
+class _AppState extends State<App> {
+  _AppState(this._application);
 
-  final App _app;
+  final Application _application;
   AppViewModel _appViewModel;
 
   @override
@@ -26,7 +26,7 @@ class _AppWidgetState extends State<AppWidget> {
 
     // initialize appState
     _appViewModel = AppViewModel(
-      repository: _app.appStateRepository,
+      repository: _application.appStateRepository,
     );
   }
 
@@ -34,7 +34,7 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<App>.value(value: _app),
+        Provider<Application>.value(value: _application),
         ChangeNotifierProvider<AppViewModel>.value(value: _appViewModel)
       ],
       child: _MaterialApp(),
@@ -49,7 +49,7 @@ class _MaterialApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _application = Provider.of<App>(context, listen: false);
+    final _application = Provider.of<Application>(context, listen: false);
     return Consumer<AppViewModel>(
       builder: (context, appViewModel, _) {
         final appState = appViewModel.appState;

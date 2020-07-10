@@ -1,5 +1,5 @@
-import 'package:appsolutely/app/business_logic/view_models/app_view_model.dart';
-import 'package:appsolutely/app/utils/languages/languages.dart';
+import 'package:appsolutely/app/app_view_model.dart';
+import 'package:appsolutely/utils/languages/languages.dart';
 import 'package:appsolutely/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

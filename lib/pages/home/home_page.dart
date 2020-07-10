@@ -1,25 +1,33 @@
 import 'package:appsolutely/app/config/styles/colors.dart';
-import 'package:appsolutely/app/core/app.dart';
+import 'package:appsolutely/app/application.dart';
+import 'package:appsolutely/app/app_view_model.dart';
+import 'package:appsolutely/pages/home/loading_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SplashPage extends StatefulWidget {
-  SplashPage({Key key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
 
   static const routeName = '/';
   static var routeHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-    return SplashPage();
+    return HomePage();
   });
 
   @override
-  _SplashPageState createState() => _SplashPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final appState = Provider.of<AppViewModel>(context).appState;
+
+    if (!appState.isReady) {
+      return LoadingPage();
+    }
+
     return Scaffold(
         body: Container(
       width: MediaQuery.of(context).size.width,
@@ -43,11 +51,12 @@ class _SplashPageState extends State<SplashPage> {
             RaisedButton(
               child: Text('START'),
               onPressed: () {
-                final router = Provider.of<App>(context, listen: false).router;
+                final router =
+                    Provider.of<Application>(context, listen: false).router;
 
                 router.navigateTo(
                   context,
-                  '/home',
+                  '/main',
                   replace: true,
                 );
               },

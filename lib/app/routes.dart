@@ -1,13 +1,13 @@
-import 'package:appsolutely/app/ui/pages/pages.dart';
+import 'package:appsolutely/pages/pages.dart';
 import 'package:fluro/fluro.dart';
 
 class Routes {
   static var routeHandlers = <String, Handler>{
-    HomePage.routeName: HomePage.routeHandler,
+    MainPage.routeName: MainPage.routeHandler,
     ProfilePage.routeName: ProfilePage.routeHandler,
     LoginPage.routeName: LoginPage.routeHandler,
     SettingsPage.routeName: SettingsPage.routeHandler,
-    SplashPage.routeName: SplashPage.routeHandler,
+    HomePage.routeName: HomePage.routeHandler,
   };
 
   static void configureRoutes(Router router) {

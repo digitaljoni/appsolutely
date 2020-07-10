@@ -1,6 +1,6 @@
-import 'package:appsolutely/app/business_logic/models/app_state.dart';
-import 'package:appsolutely/app/business_logic/repositories/app_state_repository.dart';
-import 'package:appsolutely/app/utils/log/log.dart';
+import 'package:appsolutely/models/app_state.dart';
+import 'package:appsolutely/repositories/app_state_repository.dart';
+import 'package:appsolutely/utils/log/log.dart';
 import 'package:appsolutely/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
